@@ -1,0 +1,72 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url('../img/animated\ background.gif') center  fixed; 
+    height: 100vh;
+}
+.input__area{
+    width: 50rem;
+    border: 1px solid #ffc87c;
+    padding: 1rem;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width:786px) {
+    .input__area{
+        width: 100%;
+    }
+}
+
+.message__text{
+    width: 96%;
+    font-size: larger;
+    color: white;
+    background:none;
+    border: none;
+    outline: none;
+}
+
+.bx-rocket{
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.join__btn{
+    background: none;
+    border: none;
+}
+.view{
+	font-size: large;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.view:hover{
+	text-shadow: 0px 2px 20px #ffc87c;	
+
+}
+
+.join__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+::placeholder { 
+    color: rgb(180, 180, 180);
+    opacity: 1; 
+}
+
+:-ms-input-placeholder { 
+    color: rgb(180, 180, 180);
+}
+
+::-ms-input-placeholder {
+    color: rgb(180, 180, 180);
+}

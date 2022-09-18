@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        socket = io()
+        socket.connect('http://127.0.0.1:5000/')
+    </script>
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>Interstellar Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+</head>
+<body>
+
+    <section class="container">
+
+        <div id="message__area" class="messages">
+            
+            {% if messages|length > 0 %}
+                {% for msg in messages %}
+
+                    <span class="message" title="{{ msg.date_created }}" >
+
+                        <h1 class="text-1">{{ msg.user }}</h1>
+
+                        <p class="message__text">{{ msg.message|urlize() }}</p>
+
+                    </span>
+
+                {% endfor %}
+                    
+            {% else %}
+
+                <span class="start__chat" id = "start__chat">
+                    <img class="chat__img" src="{{ url_for('static', filename='img/start chat.svg') }}">
+                    <br>
+                    <p class="text">Get the conversation going!</p>
+                </span>
+
+            {% endif %}
+
+        </div>
+
+        <form class="input__area" method="POST" id = "message__form">
+            <input type="text" id = "msg" placeholder="Type something..." class="message__text" required>
+            <i class='bx bx-rocket text' onclick="submit()"></i>
+            <input type="submit" hidden id="submit__hidden">
+        </form>
+
+    </section>
+
+    <header class="header">
+        <a href=""><h1 class="text" style="cursor: pointer">my room</h1></a>
+        <p id = "is__typing" class="typing"></p>
+    </header>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+</html>
