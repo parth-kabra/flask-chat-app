@@ -1,6 +1,2 @@
 # flask-chat-app
-A chat app developed using socket.io and flask
-
-```
-The app runs on port http://127.0.0.1:5000/
-```
+A web application based on Flask, Socket.io, SQL, and Javascript, Interstellar Chat lets you chat with stars.
