@@ -1,7 +1,20 @@
-// Functions
 
 function submit(){
     document.getElementById("submit__hidden").click()
+}
+
+function openNav() {
+
+    document.getElementById("mySidebar").style.width = "70vw"; 
+    document.getElementById("mySidebar").style.paddingLeft = "1vw"; 
+    document.getElementById("mySidebar").style.paddingRight = "1vw"; 
+
+}
+
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("mySidebar").style.paddingLeft = "0"; 
+    document.getElementById("mySidebar").style.paddingRight = "0"; 
 }
 
 function f(){
@@ -14,10 +27,18 @@ function send_message(){
     socket.send(message)
 }
 
-// Socket
 
 socket.on("connect", (Socket)=>{
     socket.send("CONNECTED!")
+})
+
+socket.on("user_action", (online_users) => {
+    if(online_users === 1){
+        $("#online__users").text(`${online_users} user online`)
+    }
+    else{
+        $("#online__users").text(`${online_users} users online`)
+    }
 })
 
 socket.on("message", (data)=>{
@@ -27,13 +48,15 @@ socket.on("message", (data)=>{
         div.style.display = "none"
     }
 
-    $("#message__area").append(`<span class="message" title="{{ msg.date_created }}" ><h1 class="text-1">${data.user}</h1><p class="message__text">${data.msg}</p></span>`)
+    $("#message__area").append(`<span class="message" title="{{ msg.date_created }}" ><h1 class="text">${data.user}</h1><p class="message__text">${data.msg}</p></span>`)
     f()
 })
 
-socket.on("typing", (is_typing) => {
+socket.on("typing", (typer) => {
+    const is_typing = typer.is_typing
+    const user = typer.user
     if(is_typing){
-        $("#is__typing").text("Somebody is typing...")
+        $("#is__typing").text(`${user} is typing...`)
     }
     else{
         $("#is__typing").text("")
@@ -61,8 +84,6 @@ document.getElementById("msg").addEventListener("input", ()=>{
     })
 })
 
-
-// HTML
 
 $("#message__form").on("submit", (event)=>{
 

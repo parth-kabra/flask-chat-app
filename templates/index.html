@@ -19,6 +19,25 @@
 </head>
 <body>
 
+    <div id="mySidebar" class="sidebar" >
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href=""><h1 class="text title text__title" style="cursor: pointer">flask room</h1></a>
+        <br>
+
+        <h2 id="online__users" class="online__users"></h2>
+        <br>
+        <br>
+
+        <h2 class="online__users about">About</h2>
+        <br>
+
+        <p class="info__text">
+            <span class="text">Interstellar Chat</span>
+            is a simple flask chat app developed and managed by <a href="https://github.com/parth-kabra/" target="_blank" class="text">@parth-kabra</a>. 
+        </p>
+        <br>
+    </div>
+
     <section class="container">
 
         <div id="message__area" class="messages">
@@ -28,7 +47,7 @@
 
                     <span class="message" title="{{ msg.date_created }}" >
 
-                        <h1 class="text-1">{{ msg.user }}</h1>
+                        <h1 class="text">{{ msg.user }}</h1>
 
                         <p class="message__text">{{ msg.message|urlize() }}</p>
 
@@ -39,9 +58,7 @@
             {% else %}
 
                 <span class="start__chat" id = "start__chat">
-                    <img class="chat__img" src="{{ url_for('static', filename='img/start chat.svg') }}">
-                    <br>
-                    <p class="text">Get the conversation going!</p>
+                    <h1 class="text get__started">Get the conversation going</h1>
                 </span>
 
             {% endif %}
@@ -52,13 +69,19 @@
             <input type="text" id = "msg" placeholder="Type something..." class="message__text" required>
             <i class='bx bx-rocket text' onclick="submit()"></i>
             <input type="submit" hidden id="submit__hidden">
+            
         </form>
 
     </section>
 
     <header class="header">
-        <a href=""><h1 class="text" style="cursor: pointer">my room</h1></a>
-        <p id = "is__typing" class="typing"></p>
+
+        <span class="group__title">
+            <a href=""><h1 class="text text__title" style="cursor: pointer">flask room</h1></a>
+            <p id = "is__typing" class="typing"></p>
+        </span>
+
+        <i class='bx bx-menu text' id = "open__nav" onclick="openNav()"></i>
     </header>
 
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>

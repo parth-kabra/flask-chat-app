@@ -55,7 +55,7 @@
 }
 
 ::-webkit-scrollbar {
-	width: 15px;
+	width: 10px;
 }
   
 ::-webkit-scrollbar-track {
@@ -97,13 +97,7 @@ img{
 }
 
 .text{
-    background: radial-gradient(circle at 10% 20%, #ffc87c 0%, #fcfb79 90%);
-    -webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
-.text-1{
-    background: radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%);
-    -webkit-background-clip: text;
+	background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }

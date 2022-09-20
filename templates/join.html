@@ -12,18 +12,31 @@
 </head>
 <body>
 
-    <h1>Join <span class="text">Interstellar</span> Chat room</h1>
+    <section>
 
-    <br>
+        <h1 class="join__title">Join <span class="text">Interstellar</span> Chat room</h1>
 
-    <form method="POST" action="/" class="join__form">
-        <span class="input__area">
-            <input type="text" placeholder="Username..." name="user_name" class="message__text" required>
-            <button type="submit" class="join__btn"><i class='bx bx-rocket text'></i></button>
-        </span>
         <br>
-        <button  type="submit" class="join__btn"><a class="view text">Join Room ➜</a></button>
-    </form>
+
+        <form method="POST" action="/" class="join__form">
+            <span class="input__area">
+                {% if current_user|length > 0 %}
+                    <input type="text" placeholder="Username..." name="user_name" class="message__text">
+                {% else %}
+                    <input type="text" placeholder="Username..." name="user_name" class="message__text" required>
+                {% endif %}
+
+                <button type="submit" class="join__btn"><i class='bx bx-rocket text'></i></button>
+            </span>
+            <br>
+            {% if current_user|length > 0 %}
+                <button  type="submit" class="button"><a class="view">Join Room as <b>{{ current_user }}</b> ➜</a></button>
+            {% else %}
+                <button  type="submit" class="button"><a class="view">Join Room ➜</a></button>
+            {% endif %}
+        </form>
+
+    </section>
     
 </body>
 </html>

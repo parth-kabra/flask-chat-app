@@ -2,13 +2,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    background: url('../img/animated\ background.gif') center  fixed; 
+    background-image: url('../img/bg1.gif');
     height: 100vh;
 }
 .input__area{
     width: 50rem;
-    border: 1px solid #ffc87c;
+    border: 1px solid #5df8db;
     padding: 1rem;
     display: flex;
     border-radius: 10px;
@@ -16,7 +15,7 @@ body{
     justify-content: space-between;
 }
 
-@media screen and (max-width:786px) {
+@media screen and (max-width:852px) {
     .input__area{
         width: 100%;
     }
@@ -42,13 +41,10 @@ body{
 }
 .view{
 	font-size: large;
-	cursor: pointer;
-	transition: 0.2s;
 }
 
-.view:hover{
-	text-shadow: 0px 2px 20px #ffc87c;	
-
+.join__title{
+    font-size:var(--about-title)
 }
 
 .join__form{
@@ -59,14 +55,31 @@ body{
 }
 
 ::placeholder { 
-    color: rgb(180, 180, 180);
+    color: rgb(240, 240, 240);
     opacity: 1; 
 }
 
 :-ms-input-placeholder { 
-    color: rgb(180, 180, 180);
+    color: rgb(240, 240, 240);
 }
 
 ::-ms-input-placeholder {
-    color: rgb(180, 180, 180);
+    color: rgb(240, 240, 240);
+}
+
+.button{
+	cursor: pointer;
+	display: inline-block;
+	background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+    padding: 1rem; 
+    border: none;
+	font-size: var(--small-font-size);
+	border-radius: 20px;
+	transition: .3s;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.button:hover{
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
