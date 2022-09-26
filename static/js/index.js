@@ -48,7 +48,7 @@ socket.on("message", (data)=>{
         div.style.display = "none"
     }
 
-    $("#message__area").append(`<span class="message" title="{{ msg.date_created }}" ><h1 class="text">${data.user}</h1><p class="message__text">${data.msg}</p></span>`)
+    $("#message__area").append(`<span class="message" title="${data.date}" ><h1 class="text">${data.user}</h1><p class="message__text">${data.msg}</p></span>`)
     f()
 })
 
@@ -98,3 +98,7 @@ $("#message__form").on("submit", (event)=>{
 $(document).ready(()=>{
     f()
 })
+
+$('.message__text a').each(function(){
+    $(this).attr('target', '_BLANK');
+});

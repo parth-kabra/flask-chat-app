@@ -103,7 +103,8 @@ def handle_message(msg) -> None:
         db.session.commit()
         sender = {
             "msg":msg,
-            "user":session["user"]
+            "user":session["user"],
+            "date":new_msg.date_created
         }
         send(sender, broadcast = True)
 
