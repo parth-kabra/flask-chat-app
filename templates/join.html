@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <title>Interstellar Chat</title>
+    <title>Interstellar Chat | Join Chat</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/join.css') }}">
 </head>
@@ -20,20 +20,16 @@
 
         <form method="POST" action="/" class="join__form">
             <span class="input__area">
-                {% if current_user|length > 0 %}
-                    <input type="text" placeholder="Username..." name="user_name" class="message__text">
-                {% else %}
-                    <input type="text" placeholder="Username..." name="user_name" class="message__text" required>
-                {% endif %}
-
+                <input type="text" placeholder="Username..." name="user_name" class="message__text" required>
                 <button type="submit" class="join__btn"><i class='bx bx-rocket text'></i></button>
             </span>
             <br>
-            {% if current_user|length > 0 %}
-                <button  type="submit" class="button"><a class="view">Join Room as <b>{{ current_user }}</b> ➜</a></button>
-            {% else %}
+            <span class="condition">
+                <input type="checkbox" required class="marked">
+                <p class="terms">I agree with <a href="/terms" class="term__link" target="_blank">Terms and conditions</a> before entering Interstellar Chat</p>
+            </span>
+            <br>
                 <button  type="submit" class="button"><a class="view">Join Room ➜</a></button>
-            {% endif %}
         </form>
 
     </section>

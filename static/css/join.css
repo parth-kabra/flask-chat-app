@@ -83,3 +83,26 @@ body{
 .button:hover{
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+.condition{
+    display: flex;
+    align-items: center;
+}
+
+.terms{
+    font-size: medium;
+    padding-left: 1vw;
+    text-shadow: 0px 2px 15px white;
+
+}
+
+.marked{
+    height: 25px;
+    width: 25px;
+}
+
+.term__link{
+    color: pink;
+    font-weight: bolder;
+    text-decoration: underline;
+}

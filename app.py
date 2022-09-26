@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 io = SocketIO(app, cors_allowed_origins="*")
 online_users = 0
 
-# MESSAGE MODLE FOR SQL
+# MESSAGE MODEL FOR SQL
 class Message(db.Model):
 
     def get_time() -> str:
@@ -53,14 +53,22 @@ def join_chat():
     else:
 
         if "user" in session:
-            return render_template("join.html", current_user = session["user"])
+            return render_template("join.html")
         
         else:
-            return render_template("join.html", current_user = "")
+            return render_template("join.html")
+
+@app.route("/terms")
+def terms_and_conditions():
+    return render_template("terms.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 # FASK CHAT AREA PAGE
 @app.route('/chat/')
-def index(msg = ""):
+def index():
 
     if "user" in session:
         messages = Message.query.order_by(Message.date_created).all()
@@ -83,6 +91,7 @@ def remove_user() -> None:
     global online_users
     online_users -= 1
     emit("user_action", online_users, broadcast = True)
+    session.clear()
 
 
 # SOCKET HANDLE MESSAGE
