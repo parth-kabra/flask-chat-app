@@ -131,4 +131,4 @@ def send_typing_signal(is_typing) -> None:
 
 
 if __name__ == '__main__':
-    io.run(app,debug=True)
+    app.run()
